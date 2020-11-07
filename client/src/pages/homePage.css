@@ -1,0 +1,17 @@
+.slogan {
+    font-size: 5rem;
+}
+
+.site-description {
+    font-size: 3rem;
+}
+
+@media only screen and (max-width: 600px) {
+    .slogan {
+        font-size: 3rem;
+    }
+
+    .site-description {
+        font-size: 1.5rem;
+    }
+}
