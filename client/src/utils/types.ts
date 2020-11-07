@@ -20,17 +20,31 @@ export interface User {
   expire?: Date;
 } // End User Interface
 
-export interface Ticket {
+export interface TicketUserInfo {
+  _id: string;
+  email: string;
+}
+
+export interface Ticket{
   updatedDate?: Date;
   createdDate?: Date;
   subject: string;
-  createdBy: string;
-  updatedBy: string;
+  createdBy: string | {
+    _id: string;
+    email: string;
+  };
+  updatedBy: string | {
+    _id: string;
+    email: string;
+  };
   description: string;
   priorityLevel: Number;
   status: string;
   type: string;
-  assignedTo: string;
+  assignedTo: string | {
+    _id: string;
+    email: string;
+  };
 }
 
 export interface DropdownsOptions {

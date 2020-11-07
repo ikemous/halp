@@ -1,14 +1,16 @@
 /* eslint-disable indent */
+import { Ticket } from "../types";
+
 interface QueryState {
   queryBy: string;
   queryText: string;
-  queryResults: Array<Object>;
+  queryResults: Array<Ticket>;
   error: boolean;
 }
 
 interface Action {
   type: string;
-  payload: string | Array<Object> | boolean;
+  payload: string | Array<Ticket> | boolean;
 }
 
 export const ticketQueryReducer = (
@@ -16,7 +18,7 @@ export const ticketQueryReducer = (
   action: Action
 ) => {
   switch (action.type) {
-    case "UPDATE_QUERY_BY":
+    case "UPDATE_QUERY_BY": 
       return { ...state, queryBy: action.payload };
     case "UPDATE_QUERY_ERROR":
       return { ...state, error: action.payload };

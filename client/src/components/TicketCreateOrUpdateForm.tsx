@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useEffect } from "react";
 import { DropdownsOptions } from "../utils/types";
 import { useDispatch, useSelector, RootStateOrAny } from "react-redux";
 import { useHistory } from "react-router-dom";

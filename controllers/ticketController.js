@@ -6,6 +6,8 @@ module.exports = {
     console.log(body);
     Ticket.find(body)
       .populate({ path: "createdBy", select: ["email", "_id"] })
+      .populate({ path: "assignedTo", select: ["email", "_id"] })
+      .populate({ path: "updatedBy", select: ["email", "_id"] })
       .then((documents) => {
         res.json(documents);
       })

@@ -45,9 +45,9 @@ function CewlNavbar() {
                 Ticket Summary
               </Nav.Link>
               <Nav.Link
-                href="/ticket-create"
+                href="/create"
                 className={
-                  location.pathname === "/ticket-create" ? "active" : ""
+                  location.pathname === "/create" ? "active" : ""
                 }
               >
                 Ticket Create

@@ -24,7 +24,12 @@ function App() {
         />
         <ProtectedRoute
           exact
-          path="/ticket-create"
+          path="/create"
+          ItemToRender={TicketCreatePage}
+        />
+        <ProtectedRoute
+          exact
+          path="/view/:id"
           ItemToRender={TicketCreatePage}
         />
       </Switch>
