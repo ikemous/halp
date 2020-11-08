@@ -9,6 +9,11 @@ import DescriptionModal from "./DescriptionModal";
 import CancelModal from "./CancelModal";
 import API from "../utils/API";
 import {
+    STATUS_OPTIONS,
+    TYPE_OPTIONS,
+    PRIORITY_OPTIONS,
+} from "../utils/options";
+import {
     updateTicketCreatedBy,
     updateTicketPriority,
     updateTicketAssignedTo,
@@ -17,34 +22,12 @@ import {
     updateTicketType,
     updateTicketUpdatedBy,
 } from "../utils/actions";
-
-
-export const STATUS_OPTIONS:Array<DropdownsOptions> = [
-    { text: "New", value: "New" },
-    { text: "In Progress", value: "In Progress" },
-    { text: "Waiting for Customer", value: "Waiting for Customer" },
-    { text: "Completed", value: "Completed" },
-];
-export const TYPE_OPTIONS:Array<DropdownsOptions> = [
-    { text: "Hardware", value: "Hardware" },
-    { text: "Software", value: "Software" },
-    { text: "Inquiry", value: "Inquiry" },
-    { text: "Misc.", value: "Misc." },
-];
-
-export const PRIORITY_OPTIONS:Array<DropdownsOptions> = [
-    { text: "1 - Critical", value: 1 },
-    { text: "2", value: 2 },
-    { text: "3 - Moderate", value: 3 },
-    { text: "4", value: 4 },
-    { text: "5 - Very Low", value: 5 },
-];
   
 interface Props {
     creatingPage: boolean;
 }
 
-function TicketCreateOrUpdateForm({ creatingPage }: Props) {
+function TicketCreateForm({ creatingPage }: Props) {
     const history = useHistory();
     const dispatch = useDispatch();
     const ticket = useSelector((state: RootStateOrAny) => state.ticket);
@@ -63,7 +46,7 @@ function TicketCreateOrUpdateForm({ creatingPage }: Props) {
     const handleSave = (event: any) => {
         event.preventDefault();
         API.createTicket(ticket)
-        .then((result) => {
+        .then(() => {
             console.log("%c Ticket Creation Successful", "color:green;")
             history.push("/ticket-summary");
         })
@@ -76,14 +59,14 @@ function TicketCreateOrUpdateForm({ creatingPage }: Props) {
                 <Col xs={12} sm={6}>
                     <Form.Label>Created By:</Form.Label>
                     <Form.Control 
-                        value={creatingPage?email:""} 
+                        value={email} 
                         disabled={creatingPage}
                     />
                 </Col>
                 <Col xs={12} sm={6}>
                     <Form.Label>Updated By:</Form.Label>
                     <Form.Control 
-                        value={creatingPage?email:""} 
+                        value={email}
                         disabled={creatingPage}
                     />
                 </Col>
@@ -149,4 +132,4 @@ function TicketCreateOrUpdateForm({ creatingPage }: Props) {
     )
 }
 
-export default TicketCreateOrUpdateForm;
+export default TicketCreateForm;

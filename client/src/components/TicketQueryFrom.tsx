@@ -6,7 +6,6 @@ import {
   updateQueryResults,
   updateQueryError,
 } from "../utils/actions";
-import { v4 as uuidv4 } from "uuid";
 import { Form, Col, Button } from "react-bootstrap";
 import { useDispatch, useSelector, RootStateOrAny } from "react-redux";
 import { useEffect } from "react";
