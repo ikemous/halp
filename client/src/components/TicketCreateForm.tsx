@@ -21,6 +21,7 @@ import {
     updateTicketSubject,
     updateTicketType,
     updateTicketUpdatedBy,
+    updateTicket,
 } from "../utils/actions";
   
 interface Props {
@@ -34,9 +35,16 @@ function TicketCreateForm({ creatingPage }: Props) {
     const { email, _id } = useSelector((state: RootStateOrAny) => state.user);
    
     useEffect(() =>{
-        dispatch(updateTicketUpdatedBy(_id));
-        dispatch(updateTicketCreatedBy(_id));
-        dispatch(updateTicketAssignedTo(_id));
+        dispatch(updateTicket({
+            subject: "Technical Support",
+            createdBy: {"_id": _id, "email": email},
+            updatedBy: {"_id": _id, "email": email},
+            description: "HALP I've fallen and can't get up!",
+            priorityLevel: 3,
+            status: "New",
+            type: "Hardware",
+            assignedTo: {"_id": _id, "email": email},
+          }));
     },[]);
 
     useEffect(() => {

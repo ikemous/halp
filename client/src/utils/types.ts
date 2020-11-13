@@ -30,11 +30,11 @@ export interface Ticket{
   updatedDate?: Date;
   createdDate?: Date;
   subject: string;
-  createdBy: string | {
+  createdBy: {
     _id: string;
     email: string;
   };
-  updatedBy: string | {
+  updatedBy: {
     _id: string;
     email: string;
   };
@@ -42,7 +42,7 @@ export interface Ticket{
   priorityLevel: Number;
   status: string;
   type: string;
-  assignedTo: string | {
+  assignedTo: {
     _id: string;
     email: string;
   };

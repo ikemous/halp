@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { DropdownsOptions } from "../utils/types";
+import { DropdownsOptions, Ticket } from "../utils/types";
 import { useDispatch, useSelector, RootStateOrAny } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Form, Col, Button } from "react-bootstrap";
@@ -61,6 +61,7 @@ function TicketUpdateForm() {
         .then(({ data }) => {
             console.log(data);
             dispatch(updateTicket(data));
+            dispatch(updateTicketUpdatedBy(_id));
         })
         .catch((error) => console.log(error));
     }, [id]);

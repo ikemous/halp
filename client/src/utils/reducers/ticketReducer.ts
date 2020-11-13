@@ -9,13 +9,13 @@ interface Action {
 export const ticketReducer = (
   state: Ticket = {
     subject: "Technical Support",
-    createdBy: "",
-    updatedBy: "",
+    createdBy: {_id: "", email: ""},
+    updatedBy: {_id: "", email: ""},
     description: "HALP I've fallen and can't get up!",
     priorityLevel: 3,
     status: "New",
     type: "Hardware",
-    assignedTo: "",
+    assignedTo: {_id: "", email: ""},
   },
   action: Action
 ) => {
