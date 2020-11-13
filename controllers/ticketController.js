@@ -16,13 +16,16 @@ module.exports = {
       });
   },
   getOne(req, res) {
+    console.log(req.params.id)
     Ticket.findOne({ _id: req.params.id })
       .populate({ path: "createdBy", select: ["email", "_id"] })
       .populate({ path: "assignedTo", select: ["email", "_id"] })
       .populate({ path: "updatedBy", select: ["email", "_id"] })
       .then((ticket) => {
+        console.log(ticket);
         res.json(ticket);
-      });
+      })
+      .catch((error) => res.json(error));
   },
   updateOne(req, res) {
     Ticket.findByIdAndUpdate(req.body._id, req.body)

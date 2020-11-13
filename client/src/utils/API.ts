@@ -17,10 +17,12 @@ export default {
     return axios.post("/users/search", query);
   },
   getAllTickets(ticketInfo: object) {
-    console.log(ticketInfo)
     return axios.post("/search", ticketInfo);
   },
   createTicket(ticketInfo: object) {
     return axios.post("/tickets/create", ticketInfo);
+  },
+  findOne(id: string) {
+    return axios.get(`/tickets/${id}`);
   },
 };

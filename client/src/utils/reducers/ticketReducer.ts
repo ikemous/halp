@@ -3,7 +3,7 @@
 import { Ticket, User } from "../types";
 interface Action {
   type: String;
-  payload: Date | String | User | Number;
+  payload: Date | String | User | Number | Ticket;
 }
 
 export const ticketReducer = (
@@ -20,6 +20,8 @@ export const ticketReducer = (
   action: Action
 ) => {
   switch (action.type) {
+    case "UPDATE_TICKET":
+      return action.payload;
     case "UPDATE_TICKET_UPDATED_DATE":
       return { ...state, updatedDate: action.payload };
     case "UPDATE_TICKET_CREATED_DATE":

@@ -26,6 +26,7 @@ export interface TicketUserInfo {
 }
 
 export interface Ticket{
+  _id?: string;
   updatedDate?: Date;
   createdDate?: Date;
   subject: string;

@@ -1,3 +1,4 @@
+import { Ticket } from "../types";
 /**
  * loginUser()
  * Purpose:
@@ -145,5 +146,12 @@ export const updateTicketAssignedTo = (updatedAsignee: string) => {
   return {
     type: "UPDATE_TICKET_ASSIGNED_TO",
     payload: updatedAsignee
+  }
+}
+
+export const updateTicket = (updatedTicket: Ticket) => {
+  return {
+    type: "UPDATE_TICKET",
+    payload: updatedTicket
   }
 }

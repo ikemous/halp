@@ -6,6 +6,7 @@ import SignupPage from "./pages/SignupPage";
 import TicketCreatePage from "./pages/TicketCreatePage";
 import TicketSummaryPage from "./pages/TicketSummaryPage";
 import ProtectedRoute from "./components/ProtectedRoute";
+import TicketUpdateForm from "./components/TicketUpdateForm";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 
@@ -30,7 +31,7 @@ function App() {
         <ProtectedRoute
           exact
           path="/view/:id"
-          ItemToRender={TicketCreatePage}
+          ItemToRender={TicketUpdateForm}
         />
       </Switch>
     </Router>
