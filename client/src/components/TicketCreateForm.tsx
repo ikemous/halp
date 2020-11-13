@@ -84,7 +84,7 @@ function TicketCreateForm({ creatingPage }: Props) {
                         onChange={({ target }) => dispatch(updateTicketType(target.value))}
                         as="select"
                     >
-                        <option disabled>Please Select Type...</option>
+                        <option disabled selected={true}>Please Select Type...</option>
                         {
                             TYPE_OPTIONS.map((option: DropdownsOptions) => <option key={uuidv4()} value={option.value}>{option.text}</option>)
                         }
@@ -93,7 +93,7 @@ function TicketCreateForm({ creatingPage }: Props) {
                 <Col xs={12} sm={6}>
                     <Form.Label>Priority Level:</Form.Label>
                     <Form.Control onChange={({ target }) => dispatch(updateTicketPriority(parseInt(target.value)))} as="select" placeholder="3 - Moderate">
-                        <option disabled>Please Select Priority...</option>
+                        <option disabled selected={true}>Please Select Priority...</option>
                         {
                             PRIORITY_OPTIONS.map((option: DropdownsOptions) => <option key={uuidv4()} value={option.value} selected={option.value===3?true:false}>{option.text}</option>)
                         }

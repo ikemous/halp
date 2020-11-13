@@ -66,7 +66,95 @@ function TicketUpdateForm() {
     }, [id]);
     return (
         <Form>
-
+            <Form.Row>
+                <Col xs={12} sm={6}>
+                    <Form.Label>Created By:</Form.Label>
+                    <Form.Control 
+                        value={ticket.createdBy.email}
+                        disabled={true}
+                    />
+                </Col>
+                <Col xs={12} sm={6}>
+                    <Form.Label>Updated By:</Form.Label>
+                    <Form.Control 
+                        value={ticket.updatedBy.email}
+                        disabled={true}
+                    />
+                </Col>
+            </Form.Row>
+            <Form.Row>
+                <Col xs={12} sm={6}>
+                    <Form.Label>Created Date:</Form.Label>
+                    <Form.Control 
+                        value={ticket.createdDate}
+                        disabled={true}
+                    />
+                </Col>
+                <Col xs={12} sm={6}>
+                    <Form.Label>Updated Date:</Form.Label>
+                    <Form.Control 
+                        value={ticket.updatedDate}
+                        disabled={true}
+                    />
+                </Col>
+            </Form.Row>
+            <Form.Row>
+                <UserSearchInput />
+                <Col xs={12} sm={6}>
+                    <DescriptionModal />
+                </Col>
+            </Form.Row>
+            <Form.Row>
+                <Col xs={12} sm={6}>
+                    <Form.Label>Type:</Form.Label>
+                    <Form.Control 
+                        onChange={({ target }) => dispatch(updateTicketType(target.value))}
+                        as="select"
+                    >
+                        <option disabled selected={true}>Please Select Type...</option>
+                        {
+                            TYPE_OPTIONS.map((option: DropdownsOptions) => <option key={uuidv4()} value={option.value}>{option.text}</option>)
+                        }
+                    </Form.Control>
+                </Col>
+                <Col xs={12} sm={6}>
+                    <Form.Label>Priority Level:</Form.Label>
+                    <Form.Control onChange={({ target }) => dispatch(updateTicketPriority(parseInt(target.value)))} as="select" placeholder="3 - Moderate">
+                        <option disabled selected={true}>Please Select Priority...</option>
+                        {
+                            PRIORITY_OPTIONS.map((option: DropdownsOptions) => <option key={uuidv4()} value={option.value} selected={option.value===3?true:false}>{option.text}</option>)
+                        }
+                    </Form.Control>
+                </Col>
+            </Form.Row>
+            <Form.Row>
+                <Col xs={12} sm={6}>
+                    <Form.Label>Status:</Form.Label>
+                    <Form.Control 
+                        onChange={({ target }) => dispatch(updateTicketStatus(target.value))} 
+                        as="select"
+                    >
+                        {
+                            STATUS_OPTIONS.map((option: DropdownsOptions) => <option key={uuidv4()} value={option.value}>{option.text}</option>)
+                        }
+                    </Form.Control>
+                </Col>
+                <Col xs={12} sm={6}>
+                    <Form.Label>Subject:</Form.Label>
+                    <Form.Control 
+                        onChange={({ target }) => dispatch(updateTicketSubject(target.value))} 
+                        placeholder="Technical Support" 
+                    />
+                </Col>
+            </Form.Row>
+            <Form.Row>
+                <Col xs={12} sm={6}>
+                    <CancelModal />
+                </Col>
+                <Col xs={12} sm={6}>
+                    <Button>Update</Button>
+                </Col>
+            </Form.Row>
         </Form>
     )
 }
