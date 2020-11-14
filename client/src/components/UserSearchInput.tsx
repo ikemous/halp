@@ -31,8 +31,12 @@ function UserSearchInput() {
                 list="userList"
                 name="userList"
                 placeholder="Search User"
-                onChange={({ target }) => {
+                onKeyUp={({ target }: any) => {
+                    setUserQuery(target.value)
+                }}
+                onSelect={({target}: any) => {
                     const list:any = document.querySelector("#userList")?.children;
+                    console.log(list)  
                     for(let i = 0; i < list.length; i++) {
                         if (list[i].value === target.value) {
                             dispatch(updateTicketAssignedTo({
@@ -42,12 +46,11 @@ function UserSearchInput() {
                             break;
                         }
                     }
-                    setUserQuery(target.value)
                 }}
                 autoComplete="off"
             />
             <datalist
-                id="userList"
+                id="userList" 
             >
                 {
                     users.map(
