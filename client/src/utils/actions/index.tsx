@@ -100,14 +100,14 @@ export const updateTicketSubject = (updatedSubject: string) => {
   }
 }
 
-export const updateTicketCreatedBy = (updatedCreator: string) => {
+export const updateTicketCreatedBy = (updatedCreator: object) => {
   return {
     type: "UPDATE_TICKET_CREATED_BY",
     payload: updatedCreator,
   }
 }
 
-export const updateTicketUpdatedBy = (updatedUpdater: string) => {
+export const updateTicketUpdatedBy = (updatedUpdater: object) => {
   return {
     type: "UPDATE_TICKET_UPDATED_BY",
     payload: updatedUpdater,
@@ -142,7 +142,7 @@ export const updateTicketType = (updatedType: string) => {
   }
 }
 
-export const updateTicketAssignedTo = (updatedAsignee: string) => {
+export const updateTicketAssignedTo = (updatedAsignee: object) => {
   return {
     type: "UPDATE_TICKET_ASSIGNED_TO",
     payload: updatedAsignee
