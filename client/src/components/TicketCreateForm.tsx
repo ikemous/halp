@@ -47,14 +47,13 @@ function TicketCreateForm({ creatingPage }: Props) {
           }));
     },[]);
 
-    useEffect(() => {
-        console.log(ticket);
-    }, [ticket]);
-
     const handleSave = (event: any) => {
         event.preventDefault();
         API.createTicket(ticket)
-        .then(() => {
+        .then((result) => {
+            const randomid = uuidv4();
+            console.log(randomid)
+            console.log(result)
             console.log("%c Ticket Creation Successful", "color:green;")
             history.push("/ticket-summary");
         })
@@ -91,8 +90,9 @@ function TicketCreateForm({ creatingPage }: Props) {
                     <Form.Control 
                         onChange={({ target }) => dispatch(updateTicketType(target.value))}
                         as="select"
+                        value={ticket.type}
                     >
-                        <option disabled selected={true}>Please Select Type...</option>
+                        <option disabled>Please Select Type...</option>
                         {
                             TYPE_OPTIONS.map((option: DropdownsOptions) => <option key={uuidv4()} value={option.value}>{option.text}</option>)
                         }
@@ -100,10 +100,15 @@ function TicketCreateForm({ creatingPage }: Props) {
                 </Col>
                 <Col xs={12} sm={6}>
                     <Form.Label>Priority Level:</Form.Label>
-                    <Form.Control onChange={({ target }) => dispatch(updateTicketPriority(parseInt(target.value)))} as="select" placeholder="3 - Moderate">
-                        <option disabled selected={true}>Please Select Priority...</option>
+                    <Form.Control 
+                        onChange={({ target }) => dispatch(updateTicketPriority(parseInt(target.value)))} 
+                        as="select"
+                        value={ticket.priorityLevel}
+                        custom
+                    >
+                        <option disabled>Please Select Priority...</option>
                         {
-                            PRIORITY_OPTIONS.map((option: DropdownsOptions) => <option key={uuidv4()} value={option.value} selected={option.value===3?true:false}>{option.text}</option>)
+                            PRIORITY_OPTIONS.map((option: DropdownsOptions) => <option key={uuidv4()} value={option.value}>{option.text}</option>)
                         }
                     </Form.Control>
                 </Col>
@@ -114,7 +119,9 @@ function TicketCreateForm({ creatingPage }: Props) {
                     <Form.Control 
                         onChange={({ target }) => dispatch(updateTicketStatus(target.value))} 
                         as="select"
+                        value={ticket.status}
                     >
+                        <option disabled>Please Select Status...</option>
                         {
                             STATUS_OPTIONS.map((option: DropdownsOptions) => <option key={uuidv4()} value={option.value}>{option.text}</option>)
                         }
