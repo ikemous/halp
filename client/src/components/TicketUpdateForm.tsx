@@ -61,7 +61,10 @@ function TicketUpdateForm() {
         .then(({ data }) => {
             console.log(data);
             dispatch(updateTicket(data));
-            dispatch(updateTicketUpdatedBy(_id));
+            dispatch(updateTicketUpdatedBy({
+                "_id": _id,
+                "email": email
+            }));
         })
         .catch((error) => console.log(error));
     }, [id]);
@@ -71,15 +74,17 @@ function TicketUpdateForm() {
                 <Col xs={12} sm={6}>
                     <Form.Label>Created By:</Form.Label>
                     <Form.Control 
-                        value={ticket.createdBy.email}
-                        disabled={true}
+                        type="text"
+                        placeholder={`${ticket.createdBy.email}`}
+                        readOnly
                     />
                 </Col>
                 <Col xs={12} sm={6}>
                     <Form.Label>Updated By:</Form.Label>
                     <Form.Control 
-                        value={ticket.updatedBy.email}
-                        disabled={true}
+                        type="text"
+                        placeholder={`${ticket.updatedBy.email}`}
+                        readOnly
                     />
                 </Col>
             </Form.Row>
@@ -87,15 +92,17 @@ function TicketUpdateForm() {
                 <Col xs={12} sm={6}>
                     <Form.Label>Created Date:</Form.Label>
                     <Form.Control 
-                        value={ticket.createdDate}
-                        disabled={true}
+                        type="text"
+                        placeholder={`${ticket.createdDate}`}
+                        readOnly
                     />
                 </Col>
                 <Col xs={12} sm={6}>
                     <Form.Label>Updated Date:</Form.Label>
                     <Form.Control 
-                        value={ticket.updatedDate}
-                        disabled={true}
+                        type="text"
+                        placeholder={`${ticket.updatedDate}`}
+                        readOnly
                     />
                 </Col>
             </Form.Row>
@@ -111,8 +118,9 @@ function TicketUpdateForm() {
                     <Form.Control 
                         onChange={({ target }) => dispatch(updateTicketType(target.value))}
                         as="select"
+                        value={ticket.type}
                     >
-                        <option disabled selected={true}>Please Select Type...</option>
+                        <option disabled>Please Select Type...</option>
                         {
                             TYPE_OPTIONS.map((option: DropdownsOptions) => <option key={uuidv4()} value={option.value}>{option.text}</option>)
                         }
@@ -120,10 +128,14 @@ function TicketUpdateForm() {
                 </Col>
                 <Col xs={12} sm={6}>
                     <Form.Label>Priority Level:</Form.Label>
-                    <Form.Control onChange={({ target }) => dispatch(updateTicketPriority(parseInt(target.value)))} as="select" placeholder="3 - Moderate">
-                        <option disabled selected={true}>Please Select Priority...</option>
+                    <Form.Control 
+                        onChange={({ target }) => dispatch(updateTicketPriority(parseInt(target.value)))}
+                        as="select" 
+                        value={ticket.priorityLevel}
+                    >
+                        <option disabled>Please Select Priority...</option>
                         {
-                            PRIORITY_OPTIONS.map((option: DropdownsOptions) => <option key={uuidv4()} value={option.value} selected={option.value===3?true:false}>{option.text}</option>)
+                            PRIORITY_OPTIONS.map((option: DropdownsOptions) => <option key={uuidv4()} value={option.value}>{option.text}</option>)
                         }
                     </Form.Control>
                 </Col>
