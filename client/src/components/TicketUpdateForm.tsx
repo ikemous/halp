@@ -68,6 +68,20 @@ function TicketUpdateForm() {
         })
         .catch((error) => console.log(error));
     }, [id]);
+
+    const handleUpdate = (event: any) => {
+        event.preventDefault();
+        API.createTicket(ticket)
+        .then((result) => {
+            const randomid = uuidv4();
+            console.log(randomid)
+            console.log(result)
+            console.log("%c Ticket Creation Successful", "color:green;")
+            history.push("/ticket-summary");
+        })
+        .catch((error) => console.log(error));
+    }
+    
     return (
         <Form>
             <Form.Row>
@@ -144,6 +158,7 @@ function TicketUpdateForm() {
                 <Col xs={12} sm={6}>
                     <Form.Label>Status:</Form.Label>
                     <Form.Control 
+                        value={ticket.status}
                         onChange={({ target }) => dispatch(updateTicketStatus(target.value))} 
                         as="select"
                     >
@@ -155,6 +170,7 @@ function TicketUpdateForm() {
                 <Col xs={12} sm={6}>
                     <Form.Label>Subject:</Form.Label>
                     <Form.Control 
+                        value={ticket.subject}
                         onChange={({ target }) => dispatch(updateTicketSubject(target.value))} 
                         placeholder="Technical Support" 
                     />

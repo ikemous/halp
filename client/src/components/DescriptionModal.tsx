@@ -1,17 +1,18 @@
 import React, { useState} from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector, RootStateOrAny } from "react-redux";
 import {
     updateTicketDescription
 } from "../utils/actions"
 
 function DescriptionModal() {
     const dispatch = useDispatch();
-    const [description, setDescription] = useState("");
+    const { description } = useSelector((state: RootStateOrAny) => state.ticket)
+    const [modalDescription, setModalDescription] = useState(description);
     const [showDescription, setShowDescription] = useState(false);
 
     const handleUpdate = (event: any) => {
-        dispatch(updateTicketDescription(description));
+        dispatch(updateTicketDescription(modalDescription));
         setShowDescription(false);
     }
 
@@ -29,8 +30,9 @@ function DescriptionModal() {
                 </Modal.Header>
                 <Modal.Body>
                     <Form.Control
+                        value={modalDescription}
                         placeholder="HALP I've Fallen and Can't Get Up!"
-                        onChange={({ target }) => setDescription(target.value)}
+                        onChange={({ target }) => setModalDescription(target.value)}
                         as="textarea"
                     ></Form.Control>
                 </Modal.Body>

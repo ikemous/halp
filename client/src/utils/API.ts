@@ -24,5 +24,11 @@ export default {
   },
   findOne(id: string) {
     return axios.get(`/tickets/${id}`);
+  },  
+  updateOne(data: object) {
+    return axios.put("/tickets/update", data);
   },
+  // deleteOne(ticketInfo: ) {
+  //   return axios.delete("/tickets/delete", { data: ticketInfo });
+  // },
 };
