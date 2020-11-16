@@ -50,12 +50,9 @@ function TicketCreateForm({ creatingPage }: Props) {
     const handleSave = (event: any) => {
         event.preventDefault();
         API.createTicket(ticket)
-        .then((result) => {
-            const randomid = uuidv4();
-            console.log(randomid)
-            console.log(result)
+        .then(({ data }) => {
             console.log("%c Ticket Creation Successful", "color:green;")
-            history.push("/ticket-summary");
+            history.push(`/view/${data._id}`);
         })
         .catch((error) => console.log(error));
     }
@@ -130,6 +127,7 @@ function TicketCreateForm({ creatingPage }: Props) {
                 <Col xs={12} sm={6}>
                     <Form.Label>Subject:</Form.Label>
                     <Form.Control 
+                        value={ticket.subject}
                         onChange={({ target }) => dispatch(updateTicketSubject(target.value))} 
                         placeholder="Technical Support" 
                     />
