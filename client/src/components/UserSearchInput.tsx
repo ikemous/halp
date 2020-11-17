@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, RootStateOrAny } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux";
-import { Form, Col, Dropdown, InputGroup, Button } from "react-bootstrap";
+import { Form, Col } from "react-bootstrap";
 import API from "../utils/API";
 import useDebouncer from "../utils/useDouncer";
 import { updateTicketAssignedTo } from "../utils/actions";
 
 function UserSearchInput() {
+    const { assignedTo } = useSelector((state: RootStateOrAny) => state.ticket)
     const [userQuery, setUserQuery] = useState("");
     const [users, setUsers] = useState([]);
     const dispatch = useDispatch();
@@ -21,6 +23,7 @@ function UserSearchInput() {
             .then(({ data }) => setUsers(data))
             .catch((error) => console.log(error));
         }
+        console.log(userQuery)
     }, [userQuery]);
 
     return (
@@ -30,7 +33,7 @@ function UserSearchInput() {
                 as="input"
                 list="userList"
                 name="userList"
-                placeholder="Search User"
+                placeholder={assignedTo.email}
                 onKeyUp={({ target }: any) => {
                     setUserQuery(target.value)
                 }}
