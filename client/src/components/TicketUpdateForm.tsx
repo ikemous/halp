@@ -14,6 +14,7 @@ import {
     TYPE_OPTIONS,
     PRIORITY_OPTIONS,
 } from "../utils/options";
+import moment from "moment";
 import {
     updateTicketCreatedBy,
     updateTicketPriority,
@@ -107,7 +108,7 @@ function TicketUpdateForm() {
                     <Form.Label>Created Date:</Form.Label>
                     <Form.Control 
                         type="text"
-                        placeholder={`${ticket.createdDate}`}
+                        placeholder={moment(ticket.createdDate).format("MMMM Do YYYY")}
                         readOnly
                     />
                 </Col>
@@ -115,7 +116,7 @@ function TicketUpdateForm() {
                     <Form.Label>Updated Date:</Form.Label>
                     <Form.Control 
                         type="text"
-                        placeholder={`${ticket.updatedDate}`}
+                        placeholder={moment(ticket.updatedDate).format("MMMM Do YYYY")}
                         readOnly
                     />
                 </Col>
