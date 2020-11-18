@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
 import { useSelector, RootStateOrAny } from "react-redux";
-import { ListGroup, Col } from "react-bootstrap";
+import { ListGroup, Col, Row } from "react-bootstrap";
 
 interface Props {
 
@@ -39,33 +39,32 @@ function TicketSummaryList({}: Props) {
     }, [queryResults]);
 
     return (
-        <ListGroup>
+        <>
             {
                 queryResults?
                     queryResults.map(({status, description, assignedTo, _id}: Query) => 
-                        <ListGroup.Item className="row" key={uuidv4()}>
-                            <Col sm={12} md={3}>
-                                <h2>Ticket Number</h2>
+                        <ListGroup key={uuidv4()} horizontal>
+                            <Col sm="12" md="3">
                                 <Link to={`view/${_id}`}>{_id}</Link>
                             </Col>
-                            <Col sm={12} md={3}>
+                            <Col sm="12" md="3">
                                 <h2>Status</h2>
                                 <p>{status}</p>
                             </Col>
-                            <Col sm={12} md={3}>
+                            <Col sm="12" md="3">
                                 <h2>Description</h2>
                                 <p>{description}</p>
                             </Col>
-                            <Col sm={12} md={3}>
+                            <Col sm="12" md="3">
                                 <h2>Assigned To</h2>
                                 <p>{assignedTo.email}</p>
-                            </Col>
-                        </ListGroup.Item>
+                            </Col>                          
+                        </ListGroup>
                     )
                     :
                     <></>
             }
-        </ListGroup>
+        </>
     );
 }
 
