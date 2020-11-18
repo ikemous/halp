@@ -16,9 +16,7 @@ import {
 } from "../utils/options";
 import moment from "moment";
 import {
-    updateTicketCreatedBy,
     updateTicketPriority,
-    updateTicketAssignedTo,
     updateTicketStatus,
     updateTicketSubject,
     updateTicketType,
@@ -72,13 +70,13 @@ function TicketUpdateForm() {
 
     const handleUpdate = (event: any) => {
         event.preventDefault();
-        API.createTicket(ticket)
+        API.updateOne(ticket)
         .then((result) => {
             const randomid = uuidv4();
             console.log(randomid)
             console.log(result)
             console.log("%c Ticket Creation Successful", "color:green;")
-            history.push("/ticket-summary");
+            history.push(`/view/${id}`);
         })
         .catch((error) => console.log(error));
     }
@@ -182,7 +180,7 @@ function TicketUpdateForm() {
                     <CancelModal />
                 </Col>
                 <Col xs={12} sm={6}>
-                    <Button>Update</Button>
+                    <Button onClick={handleUpdate}>Update</Button>
                 </Col>
             </Form.Row>
         </Form>
