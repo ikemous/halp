@@ -39,32 +39,43 @@ function TicketSummaryList({}: Props) {
     }, [queryResults]);
 
     return (
-        <>
+        <div 
+            style={{
+                overflow: "scroll",
+                maxHeight: "80vh",
+                overflowX: "hidden",
+            }}
+        >
             {
                 queryResults?
                     queryResults.map(({status, description, assignedTo, _id}: Query) => 
-                        <ListGroup key={uuidv4()} horizontal>
+                        <ListGroup 
+                            as={Row}
+                            key={uuidv4()}
+                            horizontal
+                        >
                             <Col sm="12" md="3">
-                                <Link to={`view/${_id}`}>{_id}</Link>
+                                <h4>Ticket</h4>
+                                <Link style={{wordWrap: "break-word"}} to={`view/${_id}`}>{_id}</Link>
                             </Col>
                             <Col sm="12" md="3">
-                                <h2>Status</h2>
+                                <h4>Status</h4>
                                 <p>{status}</p>
                             </Col>
                             <Col sm="12" md="3">
-                                <h2>Description</h2>
+                                <h4>Description</h4>
                                 <p>{description}</p>
                             </Col>
                             <Col sm="12" md="3">
-                                <h2>Assigned To</h2>
-                                <p>{assignedTo.email}</p>
+                                <h4>Assigned To</h4>
+                                <p style={{wordWrap: "break-word"}} >{assignedTo.email}</p>
                             </Col>                          
                         </ListGroup>
                     )
                     :
                     <></>
             }
-        </>
+        </div>
     );
 }
 

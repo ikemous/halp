@@ -52,7 +52,7 @@ function TicketQueryFrom() {
   return (
     <Form>
       <Form.Row>
-        <Col>
+        <Col sm="12" md="3">
           <Form.Control
             onChange={({ target }) => disptach(updateQueryBy(target.value))}
             as="select"
@@ -67,14 +67,14 @@ function TicketQueryFrom() {
             })}
           </Form.Control>
         </Col>
-        <Col>
+        <Col sm="12" md="7">
           <Form.Control
             disabled={queryBy===""? true: false}
             onChange={({ target }) => disptach(updateQueryText(target.value))}
           />
         </Col>
-        <Col>
-          <Button onClick={handleQuery}>Query</Button>
+        <Col sm="12" md="2">
+          <Button  style={{width:"100%"}} onClick={handleQuery}>Query</Button>
         </Col>
       </Form.Row>
     </Form>
