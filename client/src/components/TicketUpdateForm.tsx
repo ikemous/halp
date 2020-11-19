@@ -58,7 +58,8 @@ function TicketUpdateForm() {
         console.log(id);
         API.findOne(id)
         .then(({ data }) => {
-            console.log(data);
+            console.log(moment(data).format("MMMM Do YYYY"));
+            
             dispatch(updateTicket(data));
             dispatch(updateTicketUpdatedBy({
                 "_id": _id,
@@ -68,9 +69,17 @@ function TicketUpdateForm() {
         .catch((error) => console.log(error));
     }, [id]);
 
+    useEffect(() => {
+        console.log(ticket)
+        console.log(moment(ticket.updatedDate).format("MMMM Do YYYY"))
+    }, [ticket]);
+
     const handleUpdate = (event: any) => {
         event.preventDefault();
-        API.updateOne(ticket)
+        API.updateOne({
+            ...ticket,
+            updatedDate: Date.now()
+        })
         .then((result) => {
             const randomid = uuidv4();
             console.log(randomid)
@@ -82,7 +91,7 @@ function TicketUpdateForm() {
     }
     
     return (
-        <Form>
+        <Form style={{width: "95%"}}>
             <Form.Row>
                 <Col xs={12} sm={6}>
                     <Form.Label>Created By:</Form.Label>
@@ -114,7 +123,7 @@ function TicketUpdateForm() {
                     <Form.Label>Updated Date:</Form.Label>
                     <Form.Control 
                         type="text"
-                        placeholder={moment(ticket.updatedDate).format("MMMM Do YYYY")}
+                        value={moment(ticket.updatedDate).format("MMMM Do YYYY")}
                         readOnly
                     />
                 </Col>
@@ -122,7 +131,16 @@ function TicketUpdateForm() {
             <Form.Row>
                 <UserSearchInput />
                 <Col xs={12} sm={6}>
-                    <DescriptionModal />
+                    <Form.Label>Status:</Form.Label>
+                    <Form.Control 
+                        value={ticket.status}
+                        onChange={({ target }) => dispatch(updateTicketStatus(target.value))} 
+                        as="select"
+                    >
+                        {
+                            STATUS_OPTIONS.map((option: DropdownsOptions) => <option key={uuidv4()} value={option.value}>{option.text}</option>)
+                        }
+                    </Form.Control>
                 </Col>
             </Form.Row>
             <Form.Row>
@@ -154,19 +172,7 @@ function TicketUpdateForm() {
                 </Col>
             </Form.Row>
             <Form.Row>
-                <Col xs={12} sm={6}>
-                    <Form.Label>Status:</Form.Label>
-                    <Form.Control 
-                        value={ticket.status}
-                        onChange={({ target }) => dispatch(updateTicketStatus(target.value))} 
-                        as="select"
-                    >
-                        {
-                            STATUS_OPTIONS.map((option: DropdownsOptions) => <option key={uuidv4()} value={option.value}>{option.text}</option>)
-                        }
-                    </Form.Control>
-                </Col>
-                <Col xs={12} sm={6}>
+                <Col xs={12}>
                     <Form.Label>Subject:</Form.Label>
                     <Form.Control 
                         value={ticket.subject}
@@ -174,13 +180,14 @@ function TicketUpdateForm() {
                         placeholder="Technical Support" 
                     />
                 </Col>
-            </Form.Row>
-            <Form.Row>
-                <Col xs={12} sm={6}>
-                    <CancelModal />
+                <Col style={{ paddingTop: "5px"}} xs={12}>
+                    <DescriptionModal />
                 </Col>
-                <Col xs={12} sm={6}>
-                    <Button onClick={handleUpdate}>Update</Button>
+            </Form.Row>
+            <Form.Row style={{ paddingTop: "5px"}}>
+                <Col xs={12}>
+                    <CancelModal />
+                    <Button style={{position: "absolute", right: "5px"}} onClick={handleUpdate}>Update</Button>
                 </Col>
             </Form.Row>
         </Form>

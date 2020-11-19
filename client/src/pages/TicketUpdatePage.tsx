@@ -1,12 +1,16 @@
 import React from "react";
 import TicketUpdateForm from "../components/TicketUpdateForm";
-import { Container } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 
 function TicketUpdatePage() {
     return (
         <Container style={{ minHeight: "calc(100vh - 56px)" }}>
-            <h1>Test</h1>
-            <TicketUpdateForm />
+            <Row
+                style={{ height: "calc(100vh - 56px)" }}
+                className="align-items-center justify-content-center"
+            >
+                <TicketUpdateForm />
+            </Row>
         </Container>
     )
 }
