@@ -58,7 +58,7 @@ function TicketCreateForm({ creatingPage }: Props) {
     }
 
     return(
-        <Form>
+        <Form style={{width: "95%"}}>
             <Form.Row>
                 <Col xs={12} sm={6}>
                     <Form.Label>Created By:</Form.Label>
@@ -78,7 +78,18 @@ function TicketCreateForm({ creatingPage }: Props) {
             <Form.Row>
                 <UserSearchInput />
                 <Col xs={12} sm={6}>
-                    <DescriptionModal />
+                    <Form.Label>Priority Level:</Form.Label>
+                    <Form.Control 
+                        onChange={({ target }) => dispatch(updateTicketPriority(parseInt(target.value)))} 
+                        as="select"
+                        value={ticket.priorityLevel}
+                        custom
+                    >
+                        <option disabled>Please Select Priority...</option>
+                        {
+                            PRIORITY_OPTIONS.map((option: DropdownsOptions) => <option key={uuidv4()} value={option.value}>{option.text}</option>)
+                        }
+                    </Form.Control>
                 </Col>
             </Form.Row>
             <Form.Row>
@@ -96,22 +107,6 @@ function TicketCreateForm({ creatingPage }: Props) {
                     </Form.Control>
                 </Col>
                 <Col xs={12} sm={6}>
-                    <Form.Label>Priority Level:</Form.Label>
-                    <Form.Control 
-                        onChange={({ target }) => dispatch(updateTicketPriority(parseInt(target.value)))} 
-                        as="select"
-                        value={ticket.priorityLevel}
-                        custom
-                    >
-                        <option disabled>Please Select Priority...</option>
-                        {
-                            PRIORITY_OPTIONS.map((option: DropdownsOptions) => <option key={uuidv4()} value={option.value}>{option.text}</option>)
-                        }
-                    </Form.Control>
-                </Col>
-            </Form.Row>
-            <Form.Row>
-                <Col xs={12} sm={6}>
                     <Form.Label>Status:</Form.Label>
                     <Form.Control 
                         onChange={({ target }) => dispatch(updateTicketStatus(target.value))} 
@@ -124,7 +119,9 @@ function TicketCreateForm({ creatingPage }: Props) {
                         }
                     </Form.Control>
                 </Col>
-                <Col xs={12} sm={6}>
+            </Form.Row>
+            <Form.Row>
+                <Col xs={12}>
                     <Form.Label>Subject:</Form.Label>
                     <Form.Control 
                         value={ticket.subject}
@@ -132,13 +129,14 @@ function TicketCreateForm({ creatingPage }: Props) {
                         placeholder="Technical Support" 
                     />
                 </Col>
-            </Form.Row>
-            <Form.Row>
-                <Col xs={12} sm={6}>
-                    <CancelModal />
+                <Col xs={12} style={{ paddingTop: "5px" }}>
+                    <DescriptionModal />
                 </Col>
-                <Col xs={12} sm={6}>
-                    <Button onClick={handleSave}>Create</Button>
+            </Form.Row>
+            <Form.Row style={{paddingTop: "5px"}}>
+                <Col xs={12}>
+                    <CancelModal />
+                    <Button style={{position: "absolute", right: "5px"}} onClick={handleSave}>Create</Button>
                 </Col>
             </Form.Row>
         </Form>

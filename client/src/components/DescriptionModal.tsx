@@ -18,7 +18,7 @@ function DescriptionModal() {
 
     return (
         <>
-            <Button onClick={() => setShowDescription(true)}>Description</Button>
+            <Button style={{ width: "100%"}} onClick={() => setShowDescription(true)}>Description</Button>
             <Modal
                 show={showDescription}
                 onHide={() => setShowDescription(false)}

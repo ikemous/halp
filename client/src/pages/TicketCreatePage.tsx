@@ -1,11 +1,16 @@
 import React from "react";
 import TicketCreateForm from "../components/TicketCreateForm";
-import { Container } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 
 function TicketCreatePage() {
     return (
         <Container style={{ minHeight: "calc(100vh - 56px)" }}>
-            <TicketCreateForm creatingPage={true} />
+            <Row
+                style={{ height: "calc(100vh - 56px)" }}
+                className="align-items-center justify-content-center"
+            >
+                <TicketCreateForm creatingPage={true} />
+            </Row>
         </Container>
     )
 }
