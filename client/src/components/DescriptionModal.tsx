@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState, useEffect} from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector, RootStateOrAny } from "react-redux";
 import {
@@ -8,8 +8,10 @@ import {
 function DescriptionModal() {
     const dispatch = useDispatch();
     const { description } = useSelector((state: RootStateOrAny) => state.ticket)
-    const [modalDescription, setModalDescription] = useState(description);
+    const [modalDescription, setModalDescription] = useState("");
     const [showDescription, setShowDescription] = useState(false);
+
+    useEffect(() => setModalDescription(description), [description]);
 
     const handleUpdate = (event: any) => {
         dispatch(updateTicketDescription(modalDescription));

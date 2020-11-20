@@ -58,8 +58,7 @@ function TicketUpdateForm() {
         console.log(id);
         API.findOne(id)
         .then(({ data }) => {
-            console.log(moment(data).format("MMMM Do YYYY"));
-            
+            console.log(data);
             dispatch(updateTicket(data));
             dispatch(updateTicketUpdatedBy({
                 "_id": _id,
@@ -68,11 +67,6 @@ function TicketUpdateForm() {
         })
         .catch((error) => console.log(error));
     }, [id]);
-
-    useEffect(() => {
-        console.log(ticket)
-        console.log(moment(ticket.updatedDate).format("MMMM Do YYYY"))
-    }, [ticket]);
 
     const handleUpdate = (event: any) => {
         event.preventDefault();
@@ -91,7 +85,14 @@ function TicketUpdateForm() {
     }
     
     return (
-        <Form style={{width: "95%"}}>
+        <Form 
+            style={{
+                width: "95%",
+                padding: "5px",
+                background: "cadetblue",
+                borderRadius: "10px"
+            }}
+        >
             <Form.Row>
                 <Col xs={12} sm={6}>
                     <Form.Label>Created By:</Form.Label>
@@ -184,7 +185,7 @@ function TicketUpdateForm() {
                     <DescriptionModal />
                 </Col>
             </Form.Row>
-            <Form.Row style={{ paddingTop: "5px"}}>
+            <Form.Row style={{ paddingTop: "5px", marginBottom: "20px"}}>
                 <Col xs={12}>
                     <CancelModal />
                     <Button style={{position: "absolute", right: "5px"}} onClick={handleUpdate}>Update</Button>
