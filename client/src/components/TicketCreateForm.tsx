@@ -14,13 +14,10 @@ import {
     PRIORITY_OPTIONS,
 } from "../utils/options";
 import {
-    updateTicketCreatedBy,
     updateTicketPriority,
-    updateTicketAssignedTo,
     updateTicketStatus,
     updateTicketSubject,
     updateTicketType,
-    updateTicketUpdatedBy,
     updateTicket,
 } from "../utils/actions";
   
@@ -58,7 +55,14 @@ function TicketCreateForm({ creatingPage }: Props) {
     }
 
     return(
-        <Form style={{width: "95%"}}>
+        <Form 
+            style={{
+                width: "95%",
+                padding: "5px",
+                background: "cadetblue",
+                borderRadius: "10px",
+            }}
+        >
             <Form.Row>
                 <Col xs={12} sm={6}>
                     <Form.Label>Created By:</Form.Label>

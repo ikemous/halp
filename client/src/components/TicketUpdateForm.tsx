@@ -93,6 +93,7 @@ function TicketUpdateForm() {
                 borderRadius: "10px"
             }}
         >
+            <h2 className="text-center">{ticket._id}</h2>
             <Form.Row>
                 <Col xs={12} sm={6}>
                     <Form.Label>Created By:</Form.Label>

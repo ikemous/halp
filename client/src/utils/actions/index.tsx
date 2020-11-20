@@ -15,6 +15,19 @@ export const loginUser = (userInfo: Object): Object => {
   };
 };
 
+export const logoutUser = (): Object => {
+  return {
+    type: "USER_LOGIN",
+    payload: {
+      loggedIn: false,
+      _id: "",
+      email: "",
+      username: "",
+      projects: [],
+    },
+  };
+};
+
 export const updateQueryBy = (updatedValue: String) => {
   return {
     type: "UPDATE_QUERY_BY",
