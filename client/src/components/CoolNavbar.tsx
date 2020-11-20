@@ -25,7 +25,7 @@ function CewlNavbar() {
 
   return (
     <Navbar expand="md">
-      <Navbar.Brand>HALP</Navbar.Brand>
+      <Navbar.Brand href="/">HALP</Navbar.Brand>
       <Navbar.Toggle aria-controls="halp-nav" />
       <Navbar.Collapse id="halp-nav" className="justify-content-end">
         <Nav>

@@ -46,6 +46,27 @@ function TicketSummaryList({}: Props) {
                 overflowX: "hidden",
             }}
         >
+            <ListGroup 
+                as={Row}
+                horizontal
+                style={{
+                    margin: "0px",
+                    border: "1px solid black"
+                }}
+            >
+                <Col sm="12" md="3">
+                    <h4>Ticket</h4>
+                </Col>
+                <Col sm="12" md="3">
+                    <h4>Status</h4>
+                </Col>
+                <Col sm="12" md="3">
+                    <h4>Description</h4>
+                </Col>
+                <Col sm="12" md="3">
+                    <h4>Assigned To</h4>
+                </Col>                          
+            </ListGroup>
             {
                 queryResults?
                     queryResults.map(({status, description, assignedTo, _id}: Query) => 
@@ -53,21 +74,21 @@ function TicketSummaryList({}: Props) {
                             as={Row}
                             key={uuidv4()}
                             horizontal
+                            style={{
+                                margin: "0px",
+                                border: "1px solid black"
+                            }}
                         >
                             <Col sm="12" md="3">
-                                <h4>Ticket</h4>
                                 <Link style={{wordWrap: "break-word"}} to={`view/${_id}`}>{_id}</Link>
                             </Col>
                             <Col sm="12" md="3">
-                                <h4>Status</h4>
                                 <p>{status}</p>
                             </Col>
                             <Col sm="12" md="3">
-                                <h4>Description</h4>
                                 <p>{description}</p>
                             </Col>
                             <Col sm="12" md="3">
-                                <h4>Assigned To</h4>
                                 <p style={{wordWrap: "break-word"}} >{assignedTo.email}</p>
                             </Col>                          
                         </ListGroup>

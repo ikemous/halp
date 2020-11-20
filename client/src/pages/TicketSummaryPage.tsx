@@ -9,7 +9,7 @@ function TicketSummaryPage() {
   return (
     <Container style={{ minHeight: "calc(100vh - 56px)" }}>
       <TicketQueryForm />
-      <Container>
+      <Container style={{padding: "0px", marginTop: "5px"}}>
         <TicketSummaryList />
       </Container>
     </Container>
