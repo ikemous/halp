@@ -74,7 +74,7 @@ function TicketQueryFrom() {
           />
         </Col>
         <Col sm="12" md="2">
-          <Button  style={{width:"100%"}} onClick={handleQuery}>Query</Button>
+          <Button  variant="success" style={{width:"100%"}} onClick={handleQuery}>Query</Button>
         </Col>
       </Form.Row>
     </Form>

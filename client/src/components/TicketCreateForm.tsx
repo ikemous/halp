@@ -58,7 +58,7 @@ function TicketCreateForm({ creatingPage }: Props) {
         <Form 
             style={{
                 width: "95%",
-                padding: "5px",
+                padding: "20px",
                 background: "cadetblue",
                 borderRadius: "10px",
             }}
@@ -140,7 +140,13 @@ function TicketCreateForm({ creatingPage }: Props) {
             <Form.Row style={{paddingTop: "5px"}}>
                 <Col xs={12}>
                     <CancelModal />
-                    <Button style={{position: "absolute", right: "5px"}} onClick={handleSave}>Create</Button>
+                    <Button 
+                        style={{position: "absolute", right: "5px"}} 
+                        onClick={handleSave}
+                        variant="success"
+                    >
+                        Create
+                    </Button>
                 </Col>
             </Form.Row>
         </Form>

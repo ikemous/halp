@@ -50,6 +50,7 @@ function TicketSummaryList({}: Props) {
                 as={Row}
                 horizontal
                 style={{
+                    background: "cadetblue",
                     margin: "0px",
                     border: "1px solid black"
                 }}
@@ -75,6 +76,7 @@ function TicketSummaryList({}: Props) {
                             key={uuidv4()}
                             horizontal
                             style={{
+                                background: "cadetblue",
                                 margin: "0px",
                                 border: "1px solid black"
                             }}

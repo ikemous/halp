@@ -88,7 +88,7 @@ function TicketUpdateForm() {
         <Form 
             style={{
                 width: "95%",
-                padding: "5px",
+                padding: "20px",
                 background: "cadetblue",
                 borderRadius: "10px"
             }}
