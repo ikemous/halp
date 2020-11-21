@@ -3,6 +3,6 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-image: linear-gradient(to right, red , yellow);
+    background-image: linear-gradient(to right, turquoise -30%, darkblue 150%);
     z-index: -1;
 }
