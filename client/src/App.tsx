@@ -7,6 +7,7 @@ import TicketCreatePage from "./pages/TicketCreatePage";
 import TicketSummaryPage from "./pages/TicketSummaryPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import TicketUpdatePage from "./pages/TicketUpdatePage";
+import Background from "./components/Background";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 
@@ -14,6 +15,7 @@ function App() {
   return (
     <Router>
       <CoolNavbar />
+      <Background />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/login" component={LoginPage} />

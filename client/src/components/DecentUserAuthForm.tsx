@@ -107,7 +107,17 @@ function DecentUserAuthForm({ loginPage }: Props) {
   };
 
   return (
-    <Form onSubmit={!loginPage ? signup : login}>
+    <Form 
+      style={{
+        width: "1000px",
+        padding: "20px",
+        background: "cadetblue",
+        borderRadius: "10px",
+        maxWidth: "80%",
+        textAlign: "center"
+      }}
+      onSubmit={!loginPage ? signup : login}
+    >
       <Form.Group>
         <Form.Label>Email address</Form.Label>
         <Form.Control

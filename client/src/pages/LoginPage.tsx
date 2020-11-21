@@ -9,9 +9,7 @@ function LoginPage() {
         style={{ height: "calc(100vh - 56px)" }}
         className="align-items-center justify-content-center"
       >
-        <div className="text-center">
           <DecentUserAuthForm loginPage={true} />
-        </div>
       </Row>
     </Container>
   );
