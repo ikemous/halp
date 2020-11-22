@@ -25,6 +25,11 @@ export interface TicketUserInfo {
   email: string;
 }
 
+export interface Pagnation {
+  currentPage: number;
+  pageCount: number;
+}
+
 export interface Ticket{
   _id?: string;
   updatedDate?: Date;
