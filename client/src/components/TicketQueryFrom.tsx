@@ -54,7 +54,7 @@ function TicketQueryFrom() {
       <Form.Row>
         <Col
           style={{paddingTop: "5px"}}
-          sm="12" 
+          sm="3" 
           md="3"
         >
           <Form.Control
@@ -74,7 +74,7 @@ function TicketQueryFrom() {
         </Col>
         <Col
           style={{paddingTop: "5px"}} 
-          sm="12" md="7"
+          sm="7" md="7"
         >
           <Form.Control
             disabled={queryBy===""? true: false}
@@ -83,7 +83,7 @@ function TicketQueryFrom() {
         </Col>
         <Col 
           style={{paddingTop: "5px"}}
-          sm="12"
+          sm="2"
           md="2"
         >
           <Button 

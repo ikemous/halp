@@ -7,12 +7,15 @@ import "./ticketSummaryPage.css";
 function TicketSummaryPage() {
 
   return (
-    <Container style={{ minHeight: "calc(100vh - 56px)" }}>
-      <TicketQueryForm />
-      <Container style={{padding: "0px", marginTop: "5px"}}>
-        <TicketSummaryList />
+    <div style={{ minHeight: "calc(100vh - 56px)" }}>
+      <Container >
+        <TicketQueryForm />
       </Container>
-    </Container>
+      
+      <Container style={{ marginTop: "5px" }} fluid>
+          <TicketSummaryList />
+        </Container>
+    </div>
   );
 }
 

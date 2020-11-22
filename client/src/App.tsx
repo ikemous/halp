@@ -13,9 +13,10 @@ import "./App.css";
 
 function App() {
   return (
+    <>
+    <Background />
     <Router>
       <CoolNavbar />
-      <Background />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/login" component={LoginPage} />
@@ -37,6 +38,7 @@ function App() {
         />
       </Switch>
     </Router>
+    </>
   );
 }
 

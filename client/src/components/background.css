@@ -1,10 +1,53 @@
-/* .background {
+.background {
     height: 100vh;
-        position: absolute;
-        top: 0;
-        left: 0;
-    background-image: linear-gradient(to right, turquoise -30%, darkblue 150%);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    position: absolute;
+    top: 0;
+    left: 0;
     z-index: -1;
-} */
+}
+
+.dot {
+    height: 50vh;
+    width: 50vh;
+    opacity: 10%;
+    border-radius: 100%;
+}
+
+.dotOne {
+    background: aqua;
+    position: fixed;
+    top: 5%;
+    left: 5%;
+}
+
+.dotTwo {
+    background: aqua;
+    position: fixed;
+    top: 15%;
+    left: 28%;
+}
+
+.dotThree {
+    background: aqua;
+    position: fixed;
+    top: 10%;
+    right: 5%;
+}
+
+.dotFour {
+    background: aqua;
+    position: fixed;
+    width: 60vw;
+    bottom: -20%;
+    left: -5%;
+    opacity: 100%;
+}
+
+.dotFive {
+    background: aqua;
+    position: fixed;
+    width: 60vw;
+    bottom: -20%;
+    right: -5%;
+    opacity: 100%;
+}

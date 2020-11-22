@@ -39,11 +39,12 @@ function TicketSummaryList({}: Props) {
     }, [queryResults]);
 
     return (
-        <>
+        <div >
             <ListGroup 
                 as={Row}
                 horizontal
                 style={{
+                    position: "sticky",
                     background: "cadetblue",
                     margin: "0px",
                     border: "1px solid black"
@@ -64,9 +65,7 @@ function TicketSummaryList({}: Props) {
             </ListGroup>
             <div 
             style={{
-                overflow: "scroll",
                 maxHeight: "80vh",
-                overflowX: "hidden",
             }}
         >
             {
@@ -83,7 +82,16 @@ function TicketSummaryList({}: Props) {
                             }}
                         >
                             <Col sm="12" md="3">
-                                <Link style={{wordWrap: "break-word"}} to={`view/${_id}`}>{_id}</Link>
+                                <Link 
+                                    style={{
+                                        wordWrap: "break-word",
+                                        color: "darkBlue",
+                                        fontWeight: 600
+                                    }} 
+                                    to={`view/${_id}`}
+                                >
+                                    {_id}
+                                </Link>
                             </Col>
                             <Col sm="12" md="3">
                                 <p>{status}</p>
@@ -100,7 +108,7 @@ function TicketSummaryList({}: Props) {
                     <></>
             }
         </div>
-        </>
+        </div>
         
     );
 }
