@@ -18,9 +18,9 @@ function CewlNavbar() {
     API.signout()
     .then(() => {
       dispatch(logoutUser());
-      history.push("/");
     })
     .catch((error) => console.log(error));
+    history.push("/");
   };
 
   return (

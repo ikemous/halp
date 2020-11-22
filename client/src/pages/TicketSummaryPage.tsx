@@ -12,7 +12,7 @@ function TicketSummaryPage() {
         <TicketQueryForm />
       </Container>
       
-      <Container style={{ marginTop: "5px" }} fluid>
+      <Container style={{ marginTop: "5px" }}>
           <TicketSummaryList />
         </Container>
     </div>
