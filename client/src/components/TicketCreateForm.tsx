@@ -59,6 +59,7 @@ function TicketCreateForm({ creatingPage }: Props) {
             style={{
                 width: "95%",
                 padding: "20px",
+                marginBottom: "20px",
                 background: "cadetblue",
                 borderRadius: "10px",
             }}

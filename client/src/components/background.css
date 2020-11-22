@@ -1,8 +1,10 @@
-.background {
+/* .background {
     height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
     background-image: linear-gradient(to right, turquoise -30%, darkblue 150%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     z-index: -1;
-}
+} */

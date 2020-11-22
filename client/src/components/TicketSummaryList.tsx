@@ -39,13 +39,7 @@ function TicketSummaryList({}: Props) {
     }, [queryResults]);
 
     return (
-        <div 
-            style={{
-                overflow: "scroll",
-                maxHeight: "80vh",
-                overflowX: "hidden",
-            }}
-        >
+        <>
             <ListGroup 
                 as={Row}
                 horizontal
@@ -55,19 +49,26 @@ function TicketSummaryList({}: Props) {
                     border: "1px solid black"
                 }}
             >
-                <Col sm="12" md="3">
+                <Col sm={3} md="3">
                     <h4>Ticket</h4>
                 </Col>
-                <Col sm="12" md="3">
+                <Col sm={3} md="3">
                     <h4>Status</h4>
                 </Col>
-                <Col sm="12" md="3">
+                <Col sm={3} md="3">
                     <h4>Description</h4>
                 </Col>
-                <Col sm="12" md="3">
+                <Col sm={3} md="3">
                     <h4>Assigned To</h4>
                 </Col>                          
             </ListGroup>
+            <div 
+            style={{
+                overflow: "scroll",
+                maxHeight: "80vh",
+                overflowX: "hidden",
+            }}
+        >
             {
                 queryResults?
                     queryResults.map(({status, description, assignedTo, _id}: Query) => 
@@ -99,6 +100,8 @@ function TicketSummaryList({}: Props) {
                     <></>
             }
         </div>
+        </>
+        
     );
 }
 

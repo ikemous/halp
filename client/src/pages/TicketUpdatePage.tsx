@@ -6,7 +6,7 @@ function TicketUpdatePage() {
     return (
         <Container style={{ minHeight: "calc(100vh - 56px)" }}>
             <Row
-                style={{ height: "calc(100vh - 56px)" }}
+                style={{ minHeight: "calc(100vh - 56px)" }}
                 className="align-items-center justify-content-center"
             >
                 <TicketUpdateForm />

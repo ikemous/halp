@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import TicketQueryForm from "../components/TicketQueryFrom";
 import TicketSummaryList from "../components/TicketSummaryList";
 import { Container } from "react-bootstrap";
-import { RootStateOrAny, useSelector } from "react-redux";
+import "./ticketSummaryPage.css";
 
 function TicketSummaryPage() {
 

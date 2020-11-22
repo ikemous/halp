@@ -52,8 +52,13 @@ function TicketQueryFrom() {
   return (
     <Form>
       <Form.Row>
-        <Col sm="12" md="3">
+        <Col
+          style={{paddingTop: "5px"}}
+          sm="12" 
+          md="3"
+        >
           <Form.Control
+          style={{paddingTop: "5px"}}
             onChange={({ target }) => disptach(updateQueryBy(target.value))}
             as="select"
             custom
@@ -67,14 +72,24 @@ function TicketQueryFrom() {
             })}
           </Form.Control>
         </Col>
-        <Col sm="12" md="7">
+        <Col
+          style={{paddingTop: "5px"}} 
+          sm="12" md="7"
+        >
           <Form.Control
             disabled={queryBy===""? true: false}
             onChange={({ target }) => disptach(updateQueryText(target.value))}
           />
         </Col>
-        <Col sm="12" md="2">
-          <Button  variant="success" style={{width:"100%"}} onClick={handleQuery}>Query</Button>
+        <Col 
+          style={{paddingTop: "5px"}}
+          sm="12"
+          md="2"
+        >
+          <Button 
+            variant="success" 
+            style={{width:"100%"}} 
+            onClick={handleQuery}>Query</Button>
         </Col>
       </Form.Row>
     </Form>

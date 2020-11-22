@@ -88,6 +88,7 @@ function TicketUpdateForm() {
         <Form 
             style={{
                 width: "95%",
+                marginBottom: "10px",
                 padding: "20px",
                 background: "cadetblue",
                 borderRadius: "10px"
@@ -186,7 +187,7 @@ function TicketUpdateForm() {
                     <DescriptionModal />
                 </Col>
             </Form.Row>
-            <Form.Row style={{ paddingTop: "5px", marginBottom: "20px"}}>
+            <Form.Row style={{ paddingTop: "5px" }}>
                 <Col xs={12}>
                     <CancelModal />
                     <Button style={{position: "absolute", right: "5px"}} onClick={handleUpdate}>Update</Button>
