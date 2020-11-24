@@ -25,7 +25,7 @@ export interface TicketUserInfo {
   email: string;
 }
 
-export interface Pagnation {
+export interface Pagination {
   currentPage: number;
   pageCount: number;
 }

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import TicketQueryForm from "../components/TicketQueryFrom";
 import TicketSummaryList from "../components/TicketSummaryList";
+import TicketPagination from "../components/TicketPagination";
 import { Container } from "react-bootstrap";
 import "./ticketSummaryPage.css";
 
@@ -14,7 +15,8 @@ function TicketSummaryPage() {
       
       <Container style={{ marginTop: "5px" }}>
           <TicketSummaryList />
-        </Container>
+          <TicketPagination />
+      </Container>
     </div>
   );
 }
