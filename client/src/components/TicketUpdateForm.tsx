@@ -79,7 +79,7 @@ function TicketUpdateForm() {
             console.log(randomid)
             console.log(result)
             console.log("%c Ticket Creation Successful", "color:green;")
-            history.push(`/view/${id}`);
+            location.reload();
         })
         .catch((error) => console.log(error));
     }
