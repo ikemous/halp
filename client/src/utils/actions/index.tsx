@@ -168,3 +168,17 @@ export const updateTicket = (updatedTicket: Ticket) => {
     payload: updatedTicket
   }
 }
+
+export const updatePaginationCurrentCount = (updatedNumber: number) => {
+  return {
+    type:"UPDATE_PAGINATION_CURRENT_PAGE",
+    payload: updatedNumber
+  }
+}
+
+export const updatePaginationPageCount = (updatedNumber: number) => {
+  return {
+    type:"UPDATE_PAGINATION_PAGE_COUNT",
+    payload: updatedNumber
+  }
+}

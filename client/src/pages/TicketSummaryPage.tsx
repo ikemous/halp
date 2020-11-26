@@ -1,23 +1,18 @@
-import React, { useEffect } from "react";
+import React from "react";
 import TicketQueryForm from "../components/TicketQueryFrom";
 import TicketSummaryList from "../components/TicketSummaryList";
-import TicketPagination from "../components/TicketPagination";
 import { Container } from "react-bootstrap";
 import "./ticketSummaryPage.css";
+import TicketPagination from "../components/TicketPagination";
 
 function TicketSummaryPage() {
 
   return (
-    <div style={{ minHeight: "calc(100vh - 56px)" }}>
-      <Container >
+    <Container style={{ minHeight: "calc(100vh - 56px)" }} fluid>
         <TicketQueryForm />
-      </Container>
-      
-      <Container style={{ marginTop: "5px" }}>
-          <TicketSummaryList />
-          <TicketPagination />
-      </Container>
-    </div>
+        <TicketSummaryList />
+        <TicketPagination />
+    </Container>
   );
 }
 

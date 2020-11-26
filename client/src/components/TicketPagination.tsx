@@ -1,41 +1,39 @@
 import React, { useEffect } from "react";
-import { useSelector, RootStateOrAny } from "react-redux";
+import {
+    updatePaginationCurrentCount,
+    updatePaginationPageCount
+} from "../utils/actions";
+import { v4 as uuidv4 } from "uuid";
+import { useSelector, RootStateOrAny, useDispatch } from "react-redux";
 import { Pagination } from "react-bootstrap"
 
 function TicketPagination() {
+    const dispatch = useDispatch();
     const { queryResults } = useSelector((state: RootStateOrAny) => state.query);
     const { currentPage, pageCount } = useSelector((state: RootStateOrAny) => state.ticketPagination)
 
     useEffect(() => {
-        console.log(queryResults.length)
+        (queryResults.length / 8) % 1 === 0 ? dispatch(updatePaginationPageCount(1)): dispatch(updatePaginationPageCount(Math.floor(queryResults.length / 8) + 1));
     }, [queryResults]);
+    const renderPaginations = () => {
+        const paginations:Array<any> = [];
+        for(let i = 1; i <= pageCount; i++ ) {
+            paginations.push(
+                <Pagination.Item key={uuidv4()} active={currentPage === i}>
+                    {i}
+                </Pagination.Item>
+            )
+        }
+        return paginations;
+    };
 
     return (
         <Pagination>
-            <Pagination.First />
+            <Pagination.First onClick={() => dispatch(updatePaginationCurrentCount(1))} />
             <Pagination.Prev />
-            {
-                queryResults?
-                    <>
-                        <Pagination.Item active>{1}</Pagination.Item>
-                    </>
-                    :
-                    <>
-                    <Pagination.Item active>{1}</Pagination.Item>
-                    </>
-            }   
-            {/* <Pagination.Item>{1}</Pagination.Item>
-            <Pagination.Ellipsis />
-            <Pagination.Item>{10}</Pagination.Item>
-            <Pagination.Item>{11}</Pagination.Item>
-            <Pagination.Item active>{12}</Pagination.Item>
-            <Pagination.Item>{13}</Pagination.Item>
-            <Pagination.Item>{14}</Pagination.Item>
-
-            <Pagination.Ellipsis />
-            <Pagination.Item>{pageCount}</Pagination.Item> */}
+            {renderPaginations()}
             <Pagination.Next />
-            <Pagination.Last />
+            <Pagination.Last onClick={() => dispatch(updatePaginationCurrentCount(pageCount))} />
         </Pagination>
     )
 }

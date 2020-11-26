@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
-import { useSelector, RootStateOrAny } from "react-redux";
+import { useSelector, RootStateOrAny, useDispatch } from "react-redux";
 import { ListGroup, Col, Row } from "react-bootstrap";
 
 interface Props {
@@ -32,11 +32,8 @@ interface Query {
 }
 
 function TicketSummaryList({}: Props) {
+    const dispatch = useDispatch();
     const { queryResults } = useSelector((state: RootStateOrAny) => state.query);
-
-    useEffect(() => {
-        console.log(queryResults);
-    }, [queryResults]);
 
     return (
         <div >
@@ -63,11 +60,7 @@ function TicketSummaryList({}: Props) {
                     <h4>Assigned To</h4>
                 </Col>                          
             </ListGroup>
-            <div 
-            style={{
-                maxHeight: "80vh",
-            }}
-        >
+            <div>
             {
                 queryResults?
                     queryResults.map(({status, description, assignedTo, _id}: Query) => 
@@ -107,7 +100,7 @@ function TicketSummaryList({}: Props) {
                     :
                     <></>
             }
-        </div>
+            </div>
         </div>
         
     );
