@@ -1,7 +1,7 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
-import { useSelector, RootStateOrAny, useDispatch } from "react-redux";
+import { useSelector, RootStateOrAny } from "react-redux";
 import { ListGroup, Col, Row } from "react-bootstrap";
 
 interface Props {
@@ -32,8 +32,53 @@ interface Query {
 }
 
 function TicketSummaryList({}: Props) {
-    const dispatch = useDispatch();
     const { queryResults } = useSelector((state: RootStateOrAny) => state.query);
+    const { currentPage, pageCount } = useSelector((state: RootStateOrAny) => state.ticketPagination);
+
+    const renderTickets = () => {
+        const tickets:Array<any> = [];
+        for(let i = (currentPage - 1) * 8 ; i < queryResults.length && i < currentPage * 8; i++) {
+            const ticket:Query = queryResults[i]; 
+            const {_id, status, description, assignedTo: { email } } = queryResults[i];
+            console.log(ticket)
+            tickets.push(
+                <ListGroup
+                    as={Row}
+                    key={uuidv4()}
+                    horizontal
+                    style={{
+                        background: "cadetblue",
+                        margin: "0px",
+                        border: "1px solid black"
+                    }}
+                >
+                    <Col sm="12" md="3">
+                        <Link 
+                            style={{
+                                wordWrap: "break-word",
+                                color: "darkBlue",
+                                fontWeight: 600
+                            }} 
+                            to={`view/${_id}`}
+                        >
+                            {_id}
+                        </Link>
+                    </Col>
+                    <Col sm="12" md="3">
+                        <p>{status}</p>
+                    </Col>
+                    <Col sm="12" md="3">
+                        <p>{description}</p>
+                    </Col>
+                    <Col sm="12" md="3">
+                        <p style={{wordWrap: "break-word"}} >{email}</p>
+                    </Col>  
+                </ListGroup>
+            )
+        }
+        return tickets;
+    }
+
 
     return (
         <div >
@@ -61,45 +106,7 @@ function TicketSummaryList({}: Props) {
                 </Col>                          
             </ListGroup>
             <div>
-            {
-                queryResults?
-                    queryResults.map(({status, description, assignedTo, _id}: Query) => 
-                        <ListGroup 
-                            as={Row}
-                            key={uuidv4()}
-                            horizontal
-                            style={{
-                                background: "cadetblue",
-                                margin: "0px",
-                                border: "1px solid black"
-                            }}
-                        >
-                            <Col sm="12" md="3">
-                                <Link 
-                                    style={{
-                                        wordWrap: "break-word",
-                                        color: "darkBlue",
-                                        fontWeight: 600
-                                    }} 
-                                    to={`view/${_id}`}
-                                >
-                                    {_id}
-                                </Link>
-                            </Col>
-                            <Col sm="12" md="3">
-                                <p>{status}</p>
-                            </Col>
-                            <Col sm="12" md="3">
-                                <p>{description}</p>
-                            </Col>
-                            <Col sm="12" md="3">
-                                <p style={{wordWrap: "break-word"}} >{assignedTo.email}</p>
-                            </Col>                          
-                        </ListGroup>
-                    )
-                    :
-                    <></>
-            }
+                {renderTickets()}
             </div>
         </div>
         

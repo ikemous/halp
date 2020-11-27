@@ -15,24 +15,41 @@ function TicketPagination() {
     useEffect(() => {
         (queryResults.length / 8) % 1 === 0 ? dispatch(updatePaginationPageCount(1)): dispatch(updatePaginationPageCount(Math.floor(queryResults.length / 8) + 1));
     }, [queryResults]);
+    
     const renderPaginations = () => {
         const paginations:Array<any> = [];
         for(let i = 1; i <= pageCount; i++ ) {
             paginations.push(
-                <Pagination.Item key={uuidv4()} active={currentPage === i}>
+                <Pagination.Item 
+                    key={uuidv4()} 
+                    active={currentPage === i}
+                    onClick={() => dispatch(updatePaginationCurrentCount(i))}
+                >
                     {i}
                 </Pagination.Item>
             )
         }
         return paginations;
     };
+    
+    const handleNextClick = () => {
+        if(currentPage < pageCount) {
+            dispatch(updatePaginationCurrentCount(currentPage + 1));
+        }
+    }
+    
+    const handlePrevClick = () => {
+        if(currentPage > 1) {
+            dispatch(updatePaginationCurrentCount(currentPage - 1));
+        }
+    }
 
     return (
         <Pagination>
             <Pagination.First onClick={() => dispatch(updatePaginationCurrentCount(1))} />
-            <Pagination.Prev />
+            <Pagination.Prev onClick={handlePrevClick} />
             {renderPaginations()}
-            <Pagination.Next />
+            <Pagination.Next onClick={handleNextClick} />
             <Pagination.Last onClick={() => dispatch(updatePaginationCurrentCount(pageCount))} />
         </Pagination>
     )
