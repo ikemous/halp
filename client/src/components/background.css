@@ -9,12 +9,10 @@
 .dot {
     height: 40vh;
     width: 25vw;
-    opacity: 60%!important;
     border-radius: 100%;
 }
 
 .dotOne {
-    opacity: 60%!important;
     background: aqua;
     position: fixed;
     top: 5%;
@@ -22,7 +20,6 @@
 }
 
 .dotTwo {
-    opacity: 60%!important;
     background: aqua;
     position: fixed;
     top: 18%;
@@ -30,7 +27,6 @@
 }
 
 .dotThree {
-    opacity: 60%!important;
     background: aqua;
     position: fixed;
     top: 10%;
@@ -43,7 +39,6 @@
     width: 56vw;
     bottom: -28%;
     left: -5%;
-    opacity: 100%!important;
 }
 
 .dotFive {
@@ -53,19 +48,16 @@
     height: 45vh;
     bottom: -20%;
     right: -5%;
-    opacity: 100%!important;
 }
 
 @media only screen and (max-width: 600px) {
     .dot {
         height: 25vh;
         width: 25vh;
-        opacity: 60%!important;
         border-radius: 100%;
     }
 
     .dotOne {
-        opacity: 60%!important;
         background: aqua;
         position: fixed;
         top: 5%;
@@ -73,7 +65,6 @@
     }
     
     .dotTwo {
-        opacity: 60%!important;
         background: aqua;
         position: fixed;
         top: 15%;
@@ -81,7 +72,6 @@
     }
     
     .dotThree {
-        opacity: 60%!important;
         background: aqua;
         position: fixed;
         top: 10%;
@@ -94,7 +84,6 @@
         width: 55vw;
         bottom: -10%;
         left: -5%;
-        opacity: 100%!important;
     }
     
     .dotFive {
@@ -103,7 +92,5 @@
         width: 65vw;
         bottom: -15%;
         right: -10%;
-        opacity: 100%!important;
     }
-    
 }
