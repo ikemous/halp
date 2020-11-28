@@ -21,11 +21,7 @@ function DecentUserAuthForm({ loginPage }: Props) {
   );
   const history = useHistory();
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   console.log(errors);
-  // }, [errors]);
-
+  
   const login = (event: any) => {
     event.preventDefault();
     API.login({

@@ -1,5 +1,4 @@
 import React from "react";
-import Background from "../components/Background";
 import { Container, Row } from "react-bootstrap";
 import "./homePage.css";
 
