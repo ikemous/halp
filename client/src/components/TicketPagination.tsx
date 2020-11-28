@@ -23,7 +23,10 @@ function TicketPagination() {
                 <Pagination.Item 
                     key={uuidv4()} 
                     active={currentPage === i}
-                    onClick={() => dispatch(updatePaginationCurrentCount(i))}
+                    onClick={() => {
+                        dispatch(updatePaginationCurrentCount(i))
+                        window.scrollTo(0,0);
+                    }}
                 >
                     {i}
                 </Pagination.Item>
