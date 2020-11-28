@@ -13,7 +13,7 @@ function TicketPagination() {
     const { currentPage, pageCount } = useSelector((state: RootStateOrAny) => state.ticketPagination)
 
     useEffect(() => {
-        (queryResults.length / 8) % 1 === 0 ? dispatch(updatePaginationPageCount(1)): dispatch(updatePaginationPageCount(Math.floor(queryResults.length / 8) + 1));
+        (queryResults.length / 10) % 1 === 0 ? dispatch(updatePaginationPageCount(1)): dispatch(updatePaginationPageCount(Math.floor(queryResults.length / 10) + 1));
     }, [queryResults]);
     
     const renderPaginations = () => {
@@ -45,7 +45,7 @@ function TicketPagination() {
     }
 
     return (
-        <Pagination>
+        <Pagination style={{justifyContent: "center"}}>
             <Pagination.First onClick={() => dispatch(updatePaginationCurrentCount(1))} />
             <Pagination.Prev onClick={handlePrevClick} />
             {renderPaginations()}

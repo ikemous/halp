@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
 import { useSelector, RootStateOrAny } from "react-redux";
 import { ListGroup, Col, Row } from "react-bootstrap";
+import "./ticketSummary.css";
 
 interface Props {
 
@@ -37,10 +38,8 @@ function TicketSummaryList({}: Props) {
 
     const renderTickets = () => {
         const tickets:Array<any> = [];
-        for(let i = (currentPage - 1) * 8 ; i < queryResults.length && i < currentPage * 8; i++) {
-            const ticket:Query = queryResults[i]; 
+        for(let i = (currentPage - 1) * 10 ; i < queryResults.length && i < currentPage * 10; i++) {
             const {_id, status, description, assignedTo: { email } } = queryResults[i];
-            console.log(ticket)
             tickets.push(
                 <ListGroup
                     as={Row}
@@ -49,10 +48,11 @@ function TicketSummaryList({}: Props) {
                     style={{
                         background: "cadetblue",
                         margin: "0px",
-                        border: "1px solid black"
+                        border: "1px solid black",
                     }}
                 >
-                    <Col sm="12" md="3">
+                    <ListGroup.Item style={{background: "cadetblue", border: "none", display:"inline"}} as={Col} sm="12" md="3">
+                        <h4 className="ticket-indicator">Ticket: </h4>
                         <Link 
                             style={{
                                 wordWrap: "break-word",
@@ -63,16 +63,19 @@ function TicketSummaryList({}: Props) {
                         >
                             {_id}
                         </Link>
-                    </Col>
-                    <Col sm="12" md="3">
-                        <p>{status}</p>
-                    </Col>
-                    <Col sm="12" md="3">
-                        <p>{description}</p>
-                    </Col>
-                    <Col sm="12" md="3">
-                        <p style={{wordWrap: "break-word"}} >{email}</p>
-                    </Col>  
+                    </ListGroup.Item>
+                    <ListGroup.Item style={{background: "cadetblue", border: "none"}} as={Col} sm="12" md="3">
+                        <h4 className="ticket-indicator">Status: </h4>
+                        <p className="ticket-item">{status}</p>
+                    </ListGroup.Item>
+                    <ListGroup.Item style={{background: "cadetblue", border: "none"}} as={Col} sm="12" md="3">
+                        <h4 className="ticket-indicator">Description: </h4>
+                        <p className="ticket-item">{description}</p>
+                    </ListGroup.Item>
+                    <ListGroup.Item style={{background: "cadetblue", border: "none"}} as={Col} sm="12" md="3">
+                        <h4 className="ticket-indicator">Ticket: </h4>
+                        <p className="ticket-item" style={{wordWrap: "break-word"}} >{email}</p>
+                    </ListGroup.Item>  
                 </ListGroup>
             )
         }
@@ -81,33 +84,32 @@ function TicketSummaryList({}: Props) {
 
 
     return (
-        <div >
+        <div style={{minHeight: "75vh"}}>
             <ListGroup 
+                className="header-list"
                 as={Row}
                 horizontal
                 style={{
-                    position: "sticky",
                     background: "cadetblue",
                     margin: "0px",
+                    marginTop: "5px",
                     border: "1px solid black"
                 }}
             >
-                <Col sm={3} md="3">
+                <ListGroup.Item style={{background: "cadetblue", border: "none"}} as={Col} sm={3} md="3">
                     <h4>Ticket</h4>
-                </Col>
-                <Col sm={3} md="3">
+                </ListGroup.Item >
+                <ListGroup.Item style={{background: "cadetblue", border: "none"}} as={Col} sm={3} md="3">
                     <h4>Status</h4>
-                </Col>
-                <Col sm={3} md="3">
+                </ListGroup.Item>
+                <ListGroup.Item style={{background: "cadetblue", border: "none"}} as={Col} sm={3} md="3">
                     <h4>Description</h4>
-                </Col>
-                <Col sm={3} md="3">
+                </ListGroup.Item>
+                <ListGroup.Item style={{background: "cadetblue", border: "none"}} as={Col} sm={3} md="3">
                     <h4>Assigned To</h4>
-                </Col>                          
+                </ListGroup.Item>                          
             </ListGroup>
-            <div>
-                {renderTickets()}
-            </div>
+            {renderTickets()}
         </div>
         
     );
