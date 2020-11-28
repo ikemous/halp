@@ -9,7 +9,7 @@
 .dot {
     height: 40vh;
     width: 25vw;
-    opacity: 10%;
+    opacity: 60%!important;
     border-radius: 100%;
 }
 
@@ -40,7 +40,7 @@
     width: 56vw;
     bottom: -28%;
     left: -5%;
-    opacity: 100%;
+    opacity: 100%!important;
 }
 
 .dotFive {
@@ -50,13 +50,15 @@
     height: 45vh;
     bottom: -20%;
     right: -5%;
-    opacity: 100%;
+    opacity: 100%!important;
 }
 
 @media only screen and (max-width: 600px) {
     .dot {
         height: 25vh;
         width: 25vh;
+        opacity: 60%!important;
+        border-radius: 100%;
     }
 
     .dotOne {
@@ -86,7 +88,7 @@
         width: 55vw;
         bottom: -10%;
         left: -5%;
-        opacity: 100%;
+        opacity: 100%!important;
     }
     
     .dotFive {
@@ -95,7 +97,7 @@
         width: 65vw;
         bottom: -15%;
         right: -10%;
-        opacity: 100%;
+        opacity: 100%!important;
     }
     
 }
