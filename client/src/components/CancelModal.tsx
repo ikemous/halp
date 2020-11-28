@@ -25,7 +25,7 @@ function CancelModal() {
                 <Button variant="success" onClick={() => setShowCancel(false)}>
                     No
                 </Button>
-                <Button variant="danger" onClick={() => history.push("/ticket-summary")}>Yes</Button>
+                <Button variant="danger" onClick={() => history.push("/search")}>Yes</Button>
                 </Modal.Footer>
             </Modal>
         </>

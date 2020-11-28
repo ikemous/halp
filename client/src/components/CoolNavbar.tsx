@@ -53,9 +53,9 @@ function CewlNavbar() {
           ) : (
             <>
               <Nav.Link
-                href="/ticket-summary"
+                href="/search"
                 className={
-                  location.pathname === "/ticket-summary" ? "active" : ""
+                  location.pathname === "/search" ? "active" : ""
                 }
               >
                 Search

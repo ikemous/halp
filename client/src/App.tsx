@@ -23,7 +23,7 @@ function App() {
         <Route exact path="/signup" component={SignupPage} />
         <ProtectedRoute
           exact
-          path="/ticket-summary"
+          path="/search"
           ItemToRender={TicketSummaryPage}
         />
         <ProtectedRoute
