@@ -8,7 +8,7 @@ import TicketPagination from "../components/TicketPagination";
 function TicketSummaryPage() {
 
   return (
-    <Container style={{ minHeight: "calc(100vh - 56px)" }} fluid>
+    <Container style={{ minHeight: "calc(100vh - 86px)" }} fluid>
         <TicketQueryForm />
         <TicketSummaryList />
         <TicketPagination />

@@ -5,9 +5,9 @@ import "./homePage.css";
 
 function HomePage() {
   return (
-    <Container style={{ minHeight: "calc(100vh - 56px)" }}>
+    <Container style={{ minHeight: "calc(100vh - 86px)" }}>
       <Row
-        style={{ height: "calc(100vh - 56px)" }}
+        style={{ height: "calc(100vh - 86px)" }}
         className="align-items-center justify-content-center"
       >
         <div className="text-center">

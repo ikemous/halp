@@ -1,10 +1,13 @@
 import React from "react";
+import "./coolNavbar.css";
 import API from "../utils/API";
+import logo from "../utils/images/logo.png"
 import { useDispatch } from "react-redux"
 import { logoutUser } from "../utils/actions"
 import { RootStateOrAny, useSelector } from "react-redux";
 import { useLocation, useHistory } from "react-router";
-import { Nav, Navbar, Button } from "react-bootstrap";
+import { Nav, Navbar, Button, Image } from "react-bootstrap";
+
 
 function CewlNavbar() {
   const location = useLocation();
@@ -25,7 +28,13 @@ function CewlNavbar() {
 
   return (
     <Navbar expand="md">
-      <Navbar.Brand href="/">HALP</Navbar.Brand>
+      <Navbar.Brand href="/">
+        <Image 
+          src={logo} 
+          alt="halp logo"
+          style={{ maxHeight: "60px" }}
+        />
+      </Navbar.Brand>
       <Navbar.Toggle aria-controls="halp-nav" />
       <Navbar.Collapse id="halp-nav" className="justify-content-end">
         <Nav>
@@ -66,7 +75,7 @@ function CewlNavbar() {
                   location.pathname === "/create" ? "active" : ""
                 }
               >
-                Create Ticket
+                Create
               </Nav.Link>
               <Button onClick={handleSignout} variant="danger">Signout</Button>
             </>
