@@ -42,7 +42,7 @@ function DecentUserAuthForm({ loginPage }: Props) {
         };
         localStorage.setItem("user", JSON.stringify(USER));
         dispatch(loginUser(USER));
-        history.push("/ticket-summary");
+        history.push("/search");
       })
       .catch(() => {
         dispatch(
