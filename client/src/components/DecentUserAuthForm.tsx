@@ -21,7 +21,7 @@ function DecentUserAuthForm({ loginPage }: Props) {
   );
   const history = useHistory();
   const dispatch = useDispatch();
-  
+
   const login = (event: any) => {
     event.preventDefault();
     API.login({
@@ -85,7 +85,7 @@ function DecentUserAuthForm({ loginPage }: Props) {
           console.log(USER);
           localStorage.setItem("user", JSON.stringify(USER));
           dispatch(loginUser(USER));
-          history.push("/ticket-summary");
+          history.push("/search");
         })
         .catch(({ response }: any) => {
           console.log(response);
