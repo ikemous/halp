@@ -35,17 +35,19 @@ function TicketPagination() {
     const handleNextClick = () => {
         if(currentPage < pageCount) {
             dispatch(updatePaginationCurrentCount(currentPage + 1));
+            window.scrollTo(0,0);
         }
     }
     
     const handlePrevClick = () => {
         if(currentPage > 1) {
             dispatch(updatePaginationCurrentCount(currentPage - 1));
+            window.scrollTo(0,0);
         }
     }
 
     return (
-        <Pagination style={{justifyContent: "center"}}>
+        <Pagination style={{justifyContent: "center", paddingTop: "5px"}}>
             <Pagination.First onClick={() => dispatch(updatePaginationCurrentCount(1))} />
             <Pagination.Prev onClick={handlePrevClick} />
             {renderPaginations()}
